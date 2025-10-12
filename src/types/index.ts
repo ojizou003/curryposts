@@ -2,7 +2,7 @@ export interface Post {
   id: string;
   embedCode: string;
   prefecture: string;
-  platform: 'twitter';
+  platform: 'twitter' | 'instagram';
   createdAt: string;
 }
 

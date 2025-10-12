@@ -1,28 +1,34 @@
 import { CreatePostRequest, UpdatePostRequest, PREFECTURES } from '@/types';
 
-export function validateCreatePostRequest(data: any): data is CreatePostRequest {
-  return (
-    data &&
-    typeof data.embedCode === 'string' &&
-    data.embedCode.trim().length > 0 &&
-    typeof data.prefecture === 'string' &&
-    data.prefecture.trim().length > 0
-  );
-}
-
-export function validateUpdatePostRequest(data: any): data is UpdatePostRequest {
+export function validateCreatePostRequest(data: unknown): data is CreatePostRequest {
   if (!data || typeof data !== 'object') {
     return false;
   }
 
-  if (data.embedCode !== undefined) {
-    if (typeof data.embedCode !== 'string' || data.embedCode.trim().length === 0) {
+  const obj = data as Record<string, unknown>;
+  return (
+    typeof obj.embedCode === 'string' &&
+    obj.embedCode.trim().length > 0 &&
+    typeof obj.prefecture === 'string' &&
+    obj.prefecture.trim().length > 0
+  );
+}
+
+export function validateUpdatePostRequest(data: unknown): data is UpdatePostRequest {
+  if (!data || typeof data !== 'object') {
+    return false;
+  }
+
+  const obj = data as Record<string, unknown>;
+
+  if (obj.embedCode !== undefined) {
+    if (typeof obj.embedCode !== 'string' || obj.embedCode.trim().length === 0) {
       return false;
     }
   }
 
-  if (data.prefecture !== undefined) {
-    if (typeof data.prefecture !== 'string' || data.prefecture.trim().length === 0) {
+  if (obj.prefecture !== undefined) {
+    if (typeof obj.prefecture !== 'string' || obj.prefecture.trim().length === 0) {
       return false;
     }
   }
@@ -32,7 +38,7 @@ export function validateUpdatePostRequest(data: any): data is UpdatePostRequest 
 
 export function isValidPrefecture(prefecture: string): boolean {
   // 「すべて」はフィルター用のみで、投稿としては許可しない
-  return PREFECTURES.includes(prefecture as any) && prefecture !== 'すべて';
+  return PREFECTURES.includes(prefecture as typeof PREFECTURES[number]) && prefecture !== 'すべて';
 }
 
 export function sanitizeEmbedCode(embedCode: string): string {

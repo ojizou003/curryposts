@@ -1,0 +1,25 @@
+{
+  "name": "カレー投稿ギャラリー",
+  "short_name": "カレー投稿",
+  "description": "Xのカレーに関する投稿を集めたギャラリーサイト",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff6b35",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["lifestyle", "food"],
+  "lang": "ja",
+  "dir": "ltr"
+}

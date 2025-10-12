@@ -7,6 +7,22 @@ interface SafeEmbedProps {
   className?: string;
 }
 
+// Twitterウィジェットの型定義
+interface TwitterWidgets {
+  load: () => void;
+}
+
+interface TwitterWidget {
+  widgets: TwitterWidgets;
+}
+
+// グローバルWindowオブジェクトの型拡張
+declare global {
+  interface Window {
+    twttr?: TwitterWidget;
+  }
+}
+
 export default function SafeEmbed({ embedCode, className = '' }: SafeEmbedProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,8 +56,8 @@ export default function SafeEmbed({ embedCode, className = '' }: SafeEmbedProps)
 
     // Twitterの埋め込みを再初期化
     setTimeout(() => {
-      if ((window as any).twttr && (window as any).twttr.widgets) {
-        (window as any).twttr.widgets.load();
+      if (window.twttr && window.twttr.widgets) {
+        window.twttr.widgets.load();
       }
     }, 100);
   }, [embedCode]);
@@ -49,7 +65,7 @@ export default function SafeEmbed({ embedCode, className = '' }: SafeEmbedProps)
   // Type declarations and global initialization
   useEffect(() => {
     // Twitterグローバル初期化
-    (window as any).twttr = (window as any).twttr || { widgets: { load: () => {} } };
+    window.twttr = window.twttr || { widgets: { load: () => {} } };
   }, []);
 
   return (

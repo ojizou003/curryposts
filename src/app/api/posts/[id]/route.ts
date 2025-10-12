@@ -3,10 +3,10 @@ import { updatePost, deletePost, validateEmbedCode } from '@/lib/data';
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = params.id;
+    const { id } = await params;
     const body = await request.json();
     const { embedCode, prefecture } = body;
 
@@ -18,7 +18,7 @@ export async function PUT(
       );
     }
 
-    const updates: any = {};
+    const updates: Partial<{ embedCode: string; prefecture: string }> = {};
     if (embedCode) updates.embedCode = embedCode;
     if (prefecture) updates.prefecture = prefecture;
 
@@ -43,10 +43,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = params.id;
+    const { id } = await params;
     const deleted = deletePost(id);
 
     if (!deleted) {
