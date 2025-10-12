@@ -11,19 +11,25 @@ let memoryStore: PostsData | null = null;
 const isVercel = process.env.VERCEL === '1';
 
 export function readPostsData(): PostsData {
-  // Vercel環境ではメモリ内ストアを使用
+  // Vercel環境では毎回ファイルから読み込んで最新データを取得
   if (isVercel) {
-    if (!memoryStore) {
-      try {
-        // 初回起動時にファイルから読み込み
-        const data = fs.readFileSync(DATA_PATH, 'utf8');
-        memoryStore = JSON.parse(data) as PostsData;
-      } catch (error) {
-        console.error('Error reading initial posts data:', error);
-        memoryStore = { posts: [] };
+    try {
+      const data = fs.readFileSync(DATA_PATH, 'utf8');
+      const parsedData = JSON.parse(data) as PostsData;
+      console.log('Reading from file in Vercel environment:', parsedData.posts.length, 'posts');
+
+      // メモリストアを更新
+      memoryStore = parsedData;
+      return parsedData;
+    } catch (error) {
+      console.error('Error reading posts data in Vercel:', error);
+      // ファイル読み込み失敗時はメモリストアを返す
+      if (memoryStore) {
+        console.log('Falling back to memory store:', memoryStore.posts.length, 'posts');
+        return memoryStore;
       }
+      return { posts: [] };
     }
-    return memoryStore;
   }
 
   // ローカル環境ではファイルから読み込み
@@ -40,7 +46,7 @@ export function writePostsData(data: PostsData): void {
   // Vercel環境ではメモリ内に保存
   if (isVercel) {
     memoryStore = data;
-    console.log('Data saved to memory store in Vercel environment');
+    console.log('Data saved to memory store in Vercel environment:', data.posts.length, 'posts');
     return;
   }
 
