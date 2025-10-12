@@ -4,7 +4,29 @@ import path from 'path';
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'posts.json');
 
+// メモリ内ストレージ（Vercel環境用）
+let memoryStore: PostsData | null = null;
+
+// Vercel環境判定
+const isVercel = process.env.VERCEL === '1';
+
 export function readPostsData(): PostsData {
+  // Vercel環境ではメモリ内ストアを使用
+  if (isVercel) {
+    if (!memoryStore) {
+      try {
+        // 初回起動時にファイルから読み込み
+        const data = fs.readFileSync(DATA_PATH, 'utf8');
+        memoryStore = JSON.parse(data) as PostsData;
+      } catch (error) {
+        console.error('Error reading initial posts data:', error);
+        memoryStore = { posts: [] };
+      }
+    }
+    return memoryStore;
+  }
+
+  // ローカル環境ではファイルから読み込み
   try {
     const data = fs.readFileSync(DATA_PATH, 'utf8');
     return JSON.parse(data) as PostsData;
@@ -15,6 +37,14 @@ export function readPostsData(): PostsData {
 }
 
 export function writePostsData(data: PostsData): void {
+  // Vercel環境ではメモリ内に保存
+  if (isVercel) {
+    memoryStore = data;
+    console.log('Data saved to memory store in Vercel environment');
+    return;
+  }
+
+  // ローカル環境ではファイルに保存
   try {
     fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), 'utf8');
   } catch (error) {
