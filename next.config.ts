@@ -22,15 +22,9 @@ const nextConfig: NextConfig = {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
 
-  // リダイレクト設定
+  // リダイレクト設定（管理者ページは直接アクセス）
   async redirects() {
-    return [
-      {
-        source: '/admin',
-        destination: '/admin/login',
-        permanent: false,
-      },
-    ];
+    return [];
   },
 
   // ヘッダー設定
