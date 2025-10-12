@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "カレー投稿ギャラリー",
-  description: "XとInstagramのカレーに関する投稿を集めたギャラリーサイト",
+  description: "Xのカレーに関する投稿を集めたギャラリーサイト",
 };
 
 export default function RootLayout({

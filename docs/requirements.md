@@ -1,12 +1,12 @@
 # カレー投稿ギャラリーサイト要件定義
 
 ## プロジェクト概要
-XとInstagramのカレーに関する投稿の埋め込みコードを貼っただけのギャラリーサイトを作成する。
+X（Twitter）のカレーに関する投稿の埋め込みコードを貼っただけのギャラリーサイトを作成する。
 
 ## 機能要件
 
 ### 1. 基本機能
-- XとInstagramのカレー投稿埋め込みコードを一覧表示する
+- Xのカレー投稿埋め込みコードを一覧表示する
 - 埋め込みコードの登録は管理者のみが行う
 - 登録情報：埋め込みコードと都道府県のみ
 - デフォルトは全国のカレー投稿を表示
@@ -25,8 +25,7 @@ XとInstagramのカレーに関する投稿の埋め込みコードを貼った�
 ## 技術要件
 
 ### 1. プラットフォーム対応
-- X（Twitter）埋め込みコード対応
-- Instagram埋め込みコード対応
+- X（Twitter）埋め込みコードに特化
 
 ### 2. ホスティング環境
 - 無料で利用可能なホスティングサービス
@@ -54,12 +53,6 @@ XとInstagramのカレーに関する投稿の埋め込みコードを貼った�
 **X埋め込みコード例：**
 ```html
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">一部の人に理解される<br>サリサリカレー　in東白楽<br><br>カレー粉を使わないパキスタンカレー。 <a href="https://t.co/Srldugcgzh">pic.twitter.com/Srldugcgzh</a></p>&mdash; KT (@kt_keiba5) <a href="https://twitter.com/kt_keiba5/status/1965276747613823082?ref_src=twsrc%5Etfw">September 9, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-```
-
-**Instagram埋め込みコード例：**
-```html
-<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPsHyzvjy30/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">...</blockquote>
-<script async src="//www.instagram.com/embed.js"></script>
 ```
 
 ### 都道府県登録
