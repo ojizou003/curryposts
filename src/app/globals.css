@@ -21,6 +21,15 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* カスタムカラーをTailwindに認識させる */
+  --color-spice: var(--spice-orange);
+  --color-curry: var(--curry-gold);
+  --color-turmeric: var(--turmeric-yellow);
+  --color-cumin-brown: var(--cumin-brown);
+  --color-coriander: var(--coriander-green);
+  --color-yogurt-white: var(--yogurt-white);
+  --color-pepper-gray: var(--pepper-gray);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -94,6 +103,12 @@ button {
 .bg-turmeric { background-color: var(--turmeric-yellow); }
 .text-coriander { color: var(--coriander-green); }
 .bg-coriander { background-color: var(--coriander-green); }
+.text-cumin-brown { color: var(--cumin-brown); }
+.bg-cumin-brown { background-color: var(--cumin-brown); }
+.text-yogurt-white { color: var(--yogurt-white); }
+.bg-yogurt-white { background-color: var(--yogurt-white); }
+.text-pepper-gray { color: var(--pepper-gray); }
+.bg-pepper-gray { background-color: var(--pepper-gray); }
 
 /* 埋め込みコンテンツのレスポンシブ対応 */
 .embed-container {

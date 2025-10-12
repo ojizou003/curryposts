@@ -3,21 +3,26 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Post } from '@/types';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
+import AdminAuth from '@/components/AdminAuth';
 import PostForm from '@/components/PostForm';
 import AdminPostList from '@/components/AdminPostList';
 import EditPostModal from '@/components/EditPostModal';
 
 export default function AdminPage() {
+  const { isAuthenticated, isLoading: authLoading, logout, timeRemaining } = useAdminAuth();
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isFormLoading, setIsFormLoading] = useState(false);
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-  // 投稿データを取得
+  // 認証されている場合のみ投稿データを取得
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (isAuthenticated) {
+      fetchPosts();
+    }
+  }, [isAuthenticated]);
 
   const fetchPosts = async () => {
     try {
@@ -120,15 +125,53 @@ export default function AdminPage() {
     }
   };
 
+  // 未認証の場合は認証画面を表示
+  if (!isAuthenticated) {
+    return <AdminAuth onAuthSuccess={() => {
+      // 認証成功時にページをリロードして管理者画面を表示
+      window.location.reload();
+    }} />;
+  }
+
+  // 認証済みの場合は管理者画面を表示
+  const formatTimeRemaining = (ms: number) => {
+    const minutes = Math.floor(ms / (1000 * 60));
+    const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+    return `${minutes}分${seconds}秒`;
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          管理者ページ
-        </h1>
-        <p className="text-gray-600">
-          カレー投稿の管理を行います
-        </p>
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              管理者ページ
+            </h1>
+            <p className="text-gray-600">
+              カレー投稿の管理を行います
+            </p>
+          </div>
+
+          {/* 認証情報とログアウト */}
+          <div className="flex items-center space-x-4">
+            <div className="text-right">
+              <p className="text-sm text-gray-500">
+                セッション残り時間: {formatTimeRemaining(timeRemaining)}
+              </p>
+              <p className="text-xs text-coriander">
+                認証済み
+              </p>
+            </div>
+            <button
+              onClick={logout}
+              className="bg-spice text-white px-4 py-2 rounded-lg hover:bg-spice/90 transition-colors text-sm font-medium"
+            >
+              ログアウト
+            </button>
+          </div>
+        </div>
+
         <div className="mt-4">
           <Link
             href="/"

@@ -1,0 +1,7 @@
+# 管理者画面用のパスワード
+# このファイルをコピーして .env.local を作成し、実際のパスワードを設定してください
+ADMIN_PASSWORD=your_secure_password_here
+
+# アプリケーション設定
+NEXT_PUBLIC_APP_NAME=カレー投稿ギャラリー
+NEXT_PUBLIC_APP_DESCRIPTION=Xのカレーに関する投稿を集めたギャラリーサイト

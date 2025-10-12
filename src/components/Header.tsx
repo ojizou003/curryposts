@@ -6,8 +6,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center items-center h-20">
           <div className="flex items-center space-x-3">
-            <div className="text-3xl animate-pulse">🔥</div>
-            <Link href="/" className="text-2xl md:text-3xl font-bold text-white hover:text-yellow-100 transition-colors duration-300 tracking-wide">
+            <div className="text-3xl animate-pulse"></div>
+            <Link href="/" className="text-2xl md:text-3xl font-bold text-yogurt-white hover:text-curry transition-colors duration-300 tracking-wide drop-shadow-lg">
               カレー投稿ギャラリー
             </Link>
           </div>
