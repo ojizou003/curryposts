@@ -24,7 +24,7 @@ export default function PrefectureFilter({
             id="prefecture"
             value={selectedPrefecture}
             onChange={(e) => onPrefectureChange(e.target.value)}
-            className="w-full sm:w-48 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full sm:w-48 bg-white text-gray-900 text-base sm:text-sm px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             {PREFECTURES.map(prefecture => (
               <option key={prefecture} value={prefecture}>

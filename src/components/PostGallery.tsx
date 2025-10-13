@@ -49,14 +49,11 @@ export default function PostGallery({ posts, isLoading }: PostGalleryProps) {
         <div className="text-gray-500 mb-4 text-6xl">
           🍛
         </div>
-        <h3 className="text-lg font-medium text-gray-900 mb-2">
+        {/* <h3 className="text-lg font-medium text-gray-900 mb-2">
           投稿がありません
-        </h3>
+        </h3> */}
         <p className="text-gray-600 mb-4">
           まだ投稿がありません
-        </p>
-        <p className="text-sm text-gray-500">
-          管理者ページから投稿を追加してください
         </p>
       </div>
     );
