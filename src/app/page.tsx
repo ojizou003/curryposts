@@ -48,7 +48,7 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="text-center mb-8">
+      {/* <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           全国のカレー🍛大集合！！！
         </h1>
@@ -58,7 +58,7 @@ export default function Home() {
         <p className="text-sm text-gray-500">
           都道府県で絞り込んで、美味しそうなカレーを探そう！
         </p>
-      </div>
+      </div> */}
 
       <PrefectureFilter
         selectedPrefecture={selectedPrefecture}
