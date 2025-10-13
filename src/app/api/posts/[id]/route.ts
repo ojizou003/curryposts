@@ -5,6 +5,17 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // 本番環境では書き込みを拒否
+  if (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1') {
+    return NextResponse.json(
+      {
+        error: 'Write operations are disabled in production. Please make changes locally and redeploy.',
+        message: '本番環境では書き込み操作が無効化されています。ローカルで変更して再デプロイしてください。'
+      },
+      { status: 403 }
+    );
+  }
+
   try {
     const { id } = await params;
     const body = await request.json();
@@ -45,6 +56,17 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  // 本番環境では書き込みを拒否
+  if (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1') {
+    return NextResponse.json(
+      {
+        error: 'Write operations are disabled in production. Please make changes locally and redeploy.',
+        message: '本番環境では書き込み操作が無効化されています。ローカルで変更して再デプロイしてください。'
+      },
+      { status: 403 }
+    );
+  }
+
   try {
     const { id } = await params;
     const deleted = deletePost(id);

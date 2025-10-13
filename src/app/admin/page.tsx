@@ -151,6 +151,9 @@ export default function AdminPage() {
             <p className="text-gray-600">
               カレー投稿の管理を行います
             </p>
+            <p className="text-sm text-blue-600 mt-1">
+              {process.env.NODE_ENV === 'production' ? '🔒 本番環境（閲覧専用）' : '🛠️ 開発環境（編集可能）'}
+            </p>
           </div>
 
           {/* 認証情報とログアウト */}

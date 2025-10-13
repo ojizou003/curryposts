@@ -9,6 +9,8 @@ let memoryStore: PostsData | null = null;
 
 // Vercel環境判定
 const isVercel = process.env.VERCEL === '1';
+// 本番環境で書き込みを無効化する設定
+const isProduction = process.env.NODE_ENV === 'production' && isVercel;
 
 export function readPostsData(): PostsData {
   // Vercel環境では毎回ファイルから読み込んで最新データを取得
@@ -43,16 +45,23 @@ export function readPostsData(): PostsData {
 }
 
 export function writePostsData(data: PostsData): void {
-  // Vercel環境ではメモリ内に保存
-  if (isVercel) {
+  // 本番環境では書き込みを無効化
+  if (isProduction) {
+    console.log('Write operation disabled in production environment');
+    throw new Error('Write operations are disabled in production. Please make changes locally and redeploy.');
+  }
+
+  // Vercel環境（開発環境）ではメモリ内に保存
+  if (isVercel && !isProduction) {
     memoryStore = data;
-    console.log('Data saved to memory store in Vercel environment:', data.posts.length, 'posts');
+    console.log('Data saved to memory store in Vercel development environment:', data.posts.length, 'posts');
     return;
   }
 
   // ローカル環境ではファイルに保存
   try {
     fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2), 'utf8');
+    console.log('Data saved to file in local environment');
   } catch (error) {
     console.error('Error writing posts data:', error);
     throw new Error('Failed to save posts data');
