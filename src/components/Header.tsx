@@ -8,7 +8,7 @@ export default function Header() {
           <div className="flex items-center space-x-3">
             <div className="text-3xl animate-pulse"></div>
             <Link href="/" className="text-2xl md:text-3xl font-bold text-yogurt-white hover:text-curry transition-colors duration-300 tracking-wide drop-shadow-lg">
-            カレーギャラリー Ｘ
+            推しカレー 𝕏
             </Link>
           </div>
         </div>

@@ -8,7 +8,7 @@ export default function Footer() {
             {/* <span className="text-xl font-semibold text-curry">カレー投稿ギャラリー</span> */}
           </div>
           <p className="text-curry text-sm leading-relaxed font-medium">
-            カレーギャラリー Ｘ - 全国の美味しいカレーを共有
+            推しカレー 𝕏 - 全国の美味しいカレーを共有
           </p>
           {/* <p className="text-turmeric text-xs leading-relaxed max-w-md mx-auto">
             Xのカレー投稿を集めたギャラリーサイト。<br/>

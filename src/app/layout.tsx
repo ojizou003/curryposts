@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "カレーギャラリー X",
-    template: "%s | カレーギャラリー X",
+    default: "推しカレー 𝕏",
+    template: "%s | 推しカレー 𝕏",
   },
   description: "Xのカレーに関する投稿を集めたギャラリーサイト。日本全国の美味しいカレー投稿を都道府県別に閲覧できます。",
   keywords: [
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     "カレーショップ",
     "グルメ投稿"
   ],
-  authors: [{ name: "カレーギャラリー X" }],
-  creator: "カレーギャラリー X",
-  publisher: "カレーギャラリー X",
+  authors: [{ name: "推しカレー 𝕏" }],
+  creator: "推しカレー 𝕏",
+  publisher: "推しカレー 𝕏",
   formatDetection: {
     email: false,
     address: false,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     url: '/',
-    title: 'カレーギャラリー X',
+    title: '推しカレー 𝕏',
     description: 'Xのカレーに関する投稿を集めたギャラリーサイト。日本全国の美味しいカレー投稿を都道府県別に閲覧できます。',
     siteName: 'カレー投稿ギャラリー',
     images: [
@@ -55,13 +55,13 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'カレーギャラリー X',
+        alt: '推しカレー 𝕏',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'カレーギャラリー X',
+    title: '推しカレー 𝕏',
     description: 'Xのカレーに関する投稿を集めたギャラリーサイト',
     images: ['/og-image.png'],
   },
@@ -98,8 +98,8 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="カレーギャラリー X" />
-        <meta name="application-name" content="カレーギャラリー X" />
+        <meta name="apple-mobile-web-app-title" content="推しカレー 𝕏" />
+        <meta name="application-name" content="推しカレー 𝕏" />
         <meta name="msapplication-TileColor" content="#ff6b35" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
