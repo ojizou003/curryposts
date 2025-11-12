@@ -31,17 +31,17 @@ export default function AdminAuth({ onAuthSuccess }: AdminAuthProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-spice/5 to-curry/5 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-xl p-8 border border-spice/20">
+    <div className="min-h-screen bg-gradient-to-br from-spice/5 to-curry/5 dark:from-spice/10 dark:to-curry/10 flex items-center justify-center px-4">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 border border-spice/20 dark:border-gray-700">
         {/* ヘッダー */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <span className="text-3xl">🍛</span>
-            <span className="text-xl font-bold text-pepper-gray">
+            <span className="text-xl font-bold text-pepper-gray dark:text-yogurt-white">
               管理者認証
             </span>
           </div>
-          <p className="text-sm text-cumin-brown/70">
+          <p className="text-sm text-cumin-brown/70 dark:text-gray-300">
             管理者ページにアクセスするためにパスワードを入力してください
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function AdminAuth({ onAuthSuccess }: AdminAuthProps) {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* パスワード入力 */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               パスワード
             </label>
             <div className="relative">
@@ -60,14 +60,14 @@ export default function AdminAuth({ onAuthSuccess }: AdminAuthProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="パスワードを入力してください"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-spice/50 focus:border-spice transition-all duration-200 pr-12"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-spice/50 focus:border-spice transition-all duration-200 pr-12 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-400"
                 required
               />
               {/* パスワード表示/非表示切り替え */}
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none"
                 aria-label={showPassword ? 'パスワードを非表示' : 'パスワードを表示'}
               >
                 {showPassword ? (
@@ -86,12 +86,12 @@ export default function AdminAuth({ onAuthSuccess }: AdminAuthProps) {
 
           {/* エラーメッセージ */}
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
               <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-red-500 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="text-sm text-red-800">{error}</span>
+                <span className="text-sm text-red-800 dark:text-red-200">{error}</span>
               </div>
             </div>
           )}
@@ -121,7 +121,7 @@ export default function AdminAuth({ onAuthSuccess }: AdminAuthProps) {
             <button
               type="button"
               onClick={handleReset}
-              className="w-full bg-gray-100 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200"
+              className="w-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-3 px-4 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-all duration-200"
             >
               リセット
             </button>
@@ -130,8 +130,8 @@ export default function AdminAuth({ onAuthSuccess }: AdminAuthProps) {
           </form>
 
         {/* ヘルプテキスト */}
-        <div className="mt-6 pt-6 border-t border-gray-200">
-          <div className="text-center text-xs text-gray-500 space-y-1">
+        <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="text-center text-xs text-gray-500 dark:text-gray-400 space-y-1">
             <p>環境変数 ADMIN_PASSWORD で設定されたパスワードを使用してください</p>
             <p>セッション有効期間：1時間</p>
           </div>

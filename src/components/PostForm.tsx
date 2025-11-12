@@ -42,21 +42,21 @@ export default function PostForm({ onSubmit, isLoading = false }: PostFormProps)
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
         新規投稿追加
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="prefecture" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="prefecture" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             都道府県 *
           </label>
           <select
             id="prefecture"
             value={prefecture}
             onChange={(e) => setPrefecture(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           >
             <option value="">選択してください</option>
             {PREFECTURES.filter(pref => pref !== 'すべて').map(pref => (
@@ -66,7 +66,7 @@ export default function PostForm({ onSubmit, isLoading = false }: PostFormProps)
         </div>
 
         <div>
-          <label htmlFor="embedCode" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="embedCode" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             埋め込みコード *
           </label>
           <textarea
@@ -74,17 +74,17 @@ export default function PostForm({ onSubmit, isLoading = false }: PostFormProps)
             value={embedCode}
             onChange={(e) => setEmbedCode(e.target.value)}
             rows={8}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-400"
             placeholder="Xの埋め込みコードを貼り付けてください"
           />
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
             X: ポストの「...」メニュー → 「ポストを埋め込む」
           </p>
         </div>
 
         {errors.length > 0 && (
-          <div className="bg-red-50 border border-red-200 rounded-md p-4">
-            <ul className="text-sm text-red-800 space-y-1">
+          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
+            <ul className="text-sm text-red-800 dark:text-red-200 space-y-1">
               {errors.map((error, index) => (
                 <li key={index}>• {error}</li>
               ))}
@@ -96,14 +96,14 @@ export default function PostForm({ onSubmit, isLoading = false }: PostFormProps)
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 disabled:bg-blue-400 transition-colors"
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-500 disabled:bg-blue-400 dark:disabled:bg-blue-800 transition-colors"
           >
             {isLoading ? '追加中...' : '投稿を追加'}
           </button>
           <button
             type="button"
             onClick={handleReset}
-            className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+            className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
           >
             リセット
           </button>
@@ -118,8 +118,8 @@ export default function PostForm({ onSubmit, isLoading = false }: PostFormProps)
       </form>
 
       {isPreview && embedCode && (
-        <div className="mt-6 p-4 border-2 border-dashed border-gray-300 rounded-lg">
-          <h3 className="text-sm font-medium text-gray-700 mb-2">プレビュー:</h3>
+        <div className="mt-6 p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg">
+          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">プレビュー:</h3>
           <div
             className="embed-container"
             dangerouslySetInnerHTML={{ __html: embedCode }}

@@ -12,11 +12,11 @@ interface AdminPostListProps {
 export default function AdminPostList({ posts, onEdit, onDelete }: AdminPostListProps) {
   if (posts.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
           投稿一覧
         </h2>
-        <div className="text-center py-8 text-gray-500">
+        <div className="text-center py-8 text-gray-500 dark:text-gray-400">
           <p>まだ投稿がありません</p>
         </div>
       </div>
@@ -24,8 +24,8 @@ export default function AdminPostList({ posts, onEdit, onDelete }: AdminPostList
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-4">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+      <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
         投稿一覧 ({posts.length}件)
       </h2>
 

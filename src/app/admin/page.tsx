@@ -145,13 +145,13 @@ export default function AdminPage() {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
               管理者ページ
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               カレー投稿の管理を行います
             </p>
-            <p className="text-sm text-blue-600 mt-1">
+            <p className="text-sm text-blue-600 dark:text-blue-400 mt-1">
               {process.env.NODE_ENV === 'production' ? '🔒 本番環境（閲覧専用）' : '🛠️ 開発環境（編集可能）'}
             </p>
           </div>
@@ -159,16 +159,16 @@ export default function AdminPage() {
           {/* 認証情報とログアウト */}
           <div className="flex items-center space-x-4">
             <div className="text-right">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 セッション残り時間: {formatTimeRemaining(timeRemaining)}
               </p>
-              <p className="text-xs text-coriander">
+              <p className="text-xs text-coriander dark:text-coriander">
                 認証済み
               </p>
             </div>
             <button
               onClick={logout}
-              className="bg-spice text-white px-4 py-2 rounded-lg hover:bg-spice/90 transition-colors text-sm font-medium"
+              className="bg-spice text-white px-4 py-2 rounded-lg hover:bg-spice/90 dark:hover:bg-spice/80 transition-colors text-sm font-medium"
             >
               ログアウト
             </button>
@@ -178,7 +178,7 @@ export default function AdminPage() {
         <div className="mt-4">
           <Link
             href="/"
-            className="text-blue-600 hover:text-blue-800 text-sm"
+            className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm"
           >
             ← トップページに戻る
           </Link>
